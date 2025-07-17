@@ -1,0 +1,13 @@
+<svg width="32 height=32viewBox=0 0 32 fill=none" xmlns=http://www.w3/2000/svg">
+  <!-- Water drop shape -->
+  <path d="M16 4164208 20 14C20 18 18 22 16 24C14 2212 1812 1486164 fill="#03272>
+  
+  <!-- Ripple effect -->
+  <circle cx=16="16 r=8 stroke="#0a45a stroke-width="1" fill=none opacity="00.6/>
+  <circle cx=1616 r=12 stroke="#0a45a stroke-width="1" fill=none opacity="0.3"/>
+  
+  <!-- Quality indicator dots -->
+  <circle cx=12cy=12r="1" fill="#03272/>
+  <circle cx=20cy=12r="1" fill="#03272/>
+  <circle cx=16cy=18r="1" fill="#03272f"/>
+</svg> 

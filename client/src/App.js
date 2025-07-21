@@ -86,6 +86,7 @@ function Navigation() {
                     Water Quality
                   </Link>
                 </li>
+                {/* Only show Users tab to admin users */}
                 {user?.isAdmin && (
                   <li>
                     <Link 
@@ -142,13 +143,7 @@ function App() {
               {/* Protected Routes - Only accessible when logged in */}
               <Route path="/home" element={
                 <ProtectedRoute>
-                  {({ user }) => {
-                    if (user?.isAdmin) {
-                      return <Home />;
-                    } else {
-                      return <Navigate to="/water-quality" replace />;
-                    }
-                  }}
+                  <Home />
                 </ProtectedRoute>
               } />
               <Route path="/analytics" element={
@@ -158,13 +153,7 @@ function App() {
               } />
               <Route path="/users" element={
                 <ProtectedRoute>
-                  {({ user }) => {
-                    if (user?.isAdmin) {
-                      return <UserManagement />;
-                    } else {
-                      return <Navigate to="/water-quality" replace />;
-                    }
-                  }}
+                  <UserManagement />
                 </ProtectedRoute>
               } />
               <Route path="/water-quality" element={

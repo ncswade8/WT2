@@ -52,7 +52,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const API_URL = process.env.REACT_APP_API_URL;
+      const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
       
       if (response.data.success) {
         const { token, user } = response.data;
@@ -81,7 +82,8 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post('/api/auth/register', userData);
+      const API_URL = process.env.REACT_APP_API_URL;
+      const response = await axios.post(`${API_URL}/api/auth/register`, userData);
       
       if (response.data.success) {
         const { token, user } = response.data;

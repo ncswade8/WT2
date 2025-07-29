@@ -1,6 +1,6 @@
 // API Configuration for different environments
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://your-app-name.onrender.com'  // Replace with your actual Render URL
+  ? 'https://wt2-ijhw.onrender.com'  // Render backend URL
   : 'http://localhost:5000';
 
 export const apiConfig = {

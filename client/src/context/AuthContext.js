@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { getApiUrl } from '../config/api';
 
 const AuthContext = createContext();
 
@@ -26,7 +27,7 @@ export const AuthProvider = ({ children }) => {
       // Verify token is valid by making a request to get user info
       const verifyToken = async () => {
         try {
-          const response = await axios.get('/api/auth/me');
+          const response = await axios.get(getApiUrl('/api/auth/me'));
           if (response.data.success) {
             setUser(response.data.user);
             setIsAuthenticated(true);
@@ -52,8 +53,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const API_URL = 'http://localhost:5000';
-      const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
+      const response = await axios.post(getApiUrl('/api/auth/login'), { email, password });
       
       if (response.data.success) {
         const { token, user } = response.data;
@@ -82,9 +82,8 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const API_URL = 'http://localhost:5000';
-      console.log('API_URL:', API_URL); // Add this to debug
-      const response = await axios.post(`${API_URL}/api/auth/register`, userData);
+      console.log('API_URL:', getApiUrl('/api/auth/register')); // Add this to debug
+      const response = await axios.post(getApiUrl('/api/auth/register'), userData);
       
       if (response.data.success) {
         const { token, user } = response.data;

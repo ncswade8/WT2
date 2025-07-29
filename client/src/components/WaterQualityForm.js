@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Droplets, Save, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { getApiUrl } from '../config/api';
 
 const WaterQualityForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +23,7 @@ const WaterQualityForm = () => {
     const fetchUsers = async () => {
       try {
         console.log('Fetching users...');
-        const response = await axios.get('/api/users');
+        const response = await axios.get(getApiUrl('/api/users'));
         console.log('Users response:', response.data);
         if (response.data.success) {
           setUsers(response.data.users);
@@ -46,7 +47,7 @@ const WaterQualityForm = () => {
     setIsLoading(true);
     
     try {
-      const response = await axios.post('/api/water-quality', data);
+      const response = await axios.post(getApiUrl('/api/water-quality'), data);
       
       if (response.data.success) {
         toast.success('Water quality record created successfully!');

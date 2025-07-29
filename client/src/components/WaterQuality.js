@@ -4,6 +4,7 @@ import { Droplets, Search, Plus, BarChart3, Calendar, MapPin, User } from 'lucid
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
+import { getApiUrl } from '../config/api';
 
 const WaterQuality = () => {
   const [waterQualityRecords, setWaterQualityRecords] = useState([]);
@@ -20,7 +21,7 @@ const WaterQuality = () => {
 
   const fetchWaterQualityRecords = async () => {
     try {
-      const response = await axios.get('/api/water-quality');
+      const response = await axios.get(getApiUrl('/api/water-quality'));
       if (response.data.success) {
         setWaterQualityRecords(response.data.waterQuality);
       }
@@ -35,7 +36,7 @@ const WaterQuality = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this water quality record?')) {
       try {
-        await axios.delete(`/api/water-quality/${id}`);
+        await axios.delete(getApiUrl(`/api/water-quality/${id}`));
         toast.success('Water quality record deleted successfully');
         fetchWaterQualityRecords();
       } catch (error) {

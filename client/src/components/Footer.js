@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer" style={{ background: '#03272f', color: '#fff', marginTop: '2rem', paddingTop: '2rem' }}>
       <div className="container" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 1rem' }}>
-        <div className="footer-content" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '2rem' }}>
+        <div className="footer-content" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3rem' }}>
           {/* Logo & Mission */}
           <div className="footer-section" style={{ flex: '1 1 200px', minWidth: 200 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
@@ -40,13 +40,8 @@ const Footer = () => {
           </div>
         </div>
         {/* Bottom Bar */}
-        <div className="footer-bottom" style={{ borderTop: '1px solid #17404a', marginTop: 24, padding: '1rem 0 0.5rem 0', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 }}>
+        <div className="footer-bottom" style={{ borderTop: '1px solid #17404a', marginTop: 24, padding: '1rem 0 0.5rem 0', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 13 }}>
           <div>© {currentYear} The Student Coalition for Clean Water. All rights reserved.</div>
-          <div style={{ display: 'flex', gap: 16 }}>
-            <a href="#privacy" style={{ color: '#99cc00', textDecoration: 'none' }}>Privacy Policy</a>
-            <a href="#terms" style={{ color: '#99cc00', textDecoration: 'none' }}>Terms of Service</a>
-            <a href="#sitemap" style={{ color: '#99cc00', textDecoration: 'none' }}>Site Map</a>
-          </div>
         </div>
       </div>
     </footer>

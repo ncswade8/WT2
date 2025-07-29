@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Logo & Mission */}
           <div className="footer-section" style={{ flex: '1 1 200px', minWidth: 200 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-              <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg, #03272f 0%, #99cc00 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: 22 }}>S</div>
+              <div style={{ width: 50, height: 50, borderRadius: '50%', background: 'linear-gradient(135deg, #03272f 0%, #99cc00 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: 16 }}>SCCW</div>
               <span style={{ fontWeight: 700, fontSize: 18 }}>The Student Coalition for Clean Water</span>
             </div>
             <div style={{ fontSize: 14, marginBottom: 12 }}>

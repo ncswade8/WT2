@@ -18,8 +18,7 @@ const WaterQualityEditForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    watch
+    setValue
   } = useForm();
 
   // Fetch the record to edit
@@ -60,12 +59,18 @@ const WaterQualityEditForm = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        console.log('Fetching users for edit form...');
         const response = await axios.get('/api/users');
+        console.log('Users response in edit form:', response.data);
         if (response.data.success) {
           setUsers(response.data.users);
+          console.log('Users set in edit form:', response.data.users);
+        } else {
+          console.error('API returned success: false in edit form:', response.data);
         }
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching users in edit form:', error);
+        console.error('Error response in edit form:', error.response?.data);
         toast.error('Failed to load users. Please try again.');
       } finally {
         setIsLoadingUsers(false);

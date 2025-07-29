@@ -7,6 +7,7 @@ const { body, validationResult } = require('express-validator');
 const helmet = require('helmet');
 const morgan = require('morgan');
 require('dotenv').config();
+const path = require('path'); // Added for serving static files
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -1488,6 +1489,16 @@ app.get('/api/debug', (req, res) => {
     }))
   });
 });
+
+// Serve static files from the React app
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
 // Start server
 app.listen(PORT, () => {

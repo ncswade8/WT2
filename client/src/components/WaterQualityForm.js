@@ -14,20 +14,25 @@ const WaterQualityForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch
+    formState: { errors }
   } = useForm();
 
   // Fetch users on component mount
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        console.log('Fetching users...');
         const response = await axios.get('/api/users');
+        console.log('Users response:', response.data);
         if (response.data.success) {
           setUsers(response.data.users);
+          console.log('Users set:', response.data.users);
+        } else {
+          console.error('API returned success: false:', response.data);
         }
       } catch (error) {
         console.error('Error fetching users:', error);
+        console.error('Error response:', error.response?.data);
         toast.error('Failed to load users. Please try again.');
       } finally {
         setIsLoadingUsers(false);

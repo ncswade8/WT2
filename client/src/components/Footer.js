@@ -22,7 +22,21 @@ const Footer = () => {
           {/* Contact Info */}
           <div className="footer-section" style={{ flex: '1 1 180px', minWidth: 180 }}>
             <h4 style={{ color: '#99cc00', marginBottom: 8 }}>Contact Us</h4>
-            <div style={{ fontSize: 14, marginBottom: 6, display: 'flex', alignItems: 'center', gap: 8 }}><Mail size={16} /> <span>studentcleanwatercoalition@gmail.com</span></div>
+            <div style={{ fontSize: 14, marginBottom: 6, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Mail size={16} /> 
+              <a 
+                href="mailto:studentcleanwatercoalition@gmail.com?subject=Water Quality Tracker Inquiry"
+                style={{ 
+                  color: '#99cc00', 
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.target.style.color = '#fff'}
+                onMouseLeave={(e) => e.target.style.color = '#99cc00'}
+              >
+                studentcleanwatercoalition@gmail.com
+              </a>
+            </div>
           </div>
         </div>
         {/* Bottom Bar */}

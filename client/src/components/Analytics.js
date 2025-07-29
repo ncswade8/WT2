@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BarChart3, TrendingUp, Users, Calendar } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { getApiUrl } from '../config/api';
 
 const Analytics = () => {
   const [analytics, setAnalytics] = useState(null);
@@ -13,7 +14,7 @@ const Analytics = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const response = await axios.get('/api/analytics');
+      const response = await axios.get(getApiUrl('/api/analytics'));
       if (response.data.success) {
         setAnalytics(response.data.analytics);
       }

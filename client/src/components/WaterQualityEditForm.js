@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Droplets, Save, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { getApiUrl } from '../config/api';
 
 const WaterQualityEditForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +26,7 @@ const WaterQualityEditForm = () => {
   useEffect(() => {
     const fetchRecord = async () => {
       try {
-        const response = await axios.get(`/api/water-quality/${id}`);
+        const response = await axios.get(getApiUrl(`/api/water-quality/${id}`));
         if (response.data.success) {
           const waterQualityRecord = response.data.waterQuality;
           setRecord(waterQualityRecord);
@@ -60,7 +61,7 @@ const WaterQualityEditForm = () => {
     const fetchUsers = async () => {
       try {
         console.log('Fetching users for edit form...');
-        const response = await axios.get('/api/users');
+        const response = await axios.get(getApiUrl('/api/users'));
         console.log('Users response in edit form:', response.data);
         if (response.data.success) {
           setUsers(response.data.users);
@@ -84,7 +85,7 @@ const WaterQualityEditForm = () => {
     setIsLoading(true);
     
     try {
-      const response = await axios.put(`/api/water-quality/${id}`, data);
+      const response = await axios.put(getApiUrl(`/api/water-quality/${id}`), data);
       
       if (response.data.success) {
         toast.success('Water quality record updated successfully!');

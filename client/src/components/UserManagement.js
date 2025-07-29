@@ -4,6 +4,7 @@ import { Shield, UserPlus, Edit, Trash2, Eye, EyeOff, Users as UsersIcon, Search
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
+import { getApiUrl } from '../config/api';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -24,7 +25,7 @@ const UserManagement = () => {
     setIsLoading(true);
     try {
       const endpoint = currentUser?.isAdmin ? '/api/admin/users' : '/api/users';
-      const response = await axios.get(endpoint);
+      const response = await axios.get(getApiUrl(endpoint));
       if (response.data.success) {
         setUsers(response.data.users);
       }
@@ -38,7 +39,7 @@ const UserManagement = () => {
   const handleCreateUser = async (userData) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.post('/api/admin/users', userData);
+      const response = await axios.post(getApiUrl('/api/admin/users'), userData);
       if (response.data.success) {
         toast.success('User created successfully');
         setShowCreateForm(false);
@@ -54,7 +55,7 @@ const UserManagement = () => {
   const handleUpdateUser = async (userId, userData) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.put(`/api/admin/users/${userId}`, userData);
+      const response = await axios.put(getApiUrl(`/api/admin/users/${userId}`), userData);
       if (response.data.success) {
         toast.success('User updated successfully');
         setEditingUser(null);
@@ -74,7 +75,7 @@ const UserManagement = () => {
     }
     if (window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
       try {
-        const response = await axios.delete(`/api/admin/users/${userId}`);
+        const response = await axios.delete(getApiUrl(`/api/admin/users/${userId}`));
         if (response.data.success) {
           toast.success('User deleted successfully');
           fetchUsers();
@@ -87,7 +88,7 @@ const UserManagement = () => {
 
   const toggleUserStatus = async (userId, isActive) => {
     try {
-      const response = await axios.patch(`/api/admin/users/${userId}/status`, {
+      const response = await axios.patch(getApiUrl(`/api/admin/users/${userId}/status`), {
         isActive: !isActive
       });
       if (response.data.success) {

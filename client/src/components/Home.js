@@ -4,6 +4,7 @@ import { User, Calendar, Activity, LogOut, Droplets } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
+import { getApiUrl } from '../config/api';
 
 const Home = () => {
   const [analytics, setAnalytics] = useState(null);
@@ -17,7 +18,7 @@ const Home = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const response = await axios.get('/api/analytics');
+      const response = await axios.get(getApiUrl('/api/analytics'));
       if (response.data.success) {
         setAnalytics(response.data.analytics);
       }

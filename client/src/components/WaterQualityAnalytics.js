@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { BarChart3, Droplets, TrendingUp, MapPin, User, Calendar, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { getApiUrl } from '../config/api';
 
 const WaterQualityAnalytics = () => {
   const [analytics, setAnalytics] = useState(null);
@@ -17,7 +18,7 @@ const WaterQualityAnalytics = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const response = await axios.get('/api/water-quality-analytics');
+      const response = await axios.get(getApiUrl('/api/water-quality-analytics'));
       if (response.data.success) {
         setAnalytics(response.data.analytics);
       }
@@ -29,7 +30,7 @@ const WaterQualityAnalytics = () => {
 
   const fetchWaterQualityRecords = async () => {
     try {
-      const response = await axios.get('/api/water-quality');
+      const response = await axios.get(getApiUrl('/api/water-quality'));
       if (response.data.success) {
         setWaterQualityRecords(response.data.waterQuality);
       }
